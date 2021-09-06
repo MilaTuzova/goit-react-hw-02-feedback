@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Feedbackbtn = ({ onGood, onNeutr, onBad }) => (
+const FeedbackOptions = ({ onGood, onNeutr, onBad }) => (
   <div>
     <button className="Btn" type="button" onClick={onGood}>
       good
@@ -14,4 +14,4 @@ const Feedbackbtn = ({ onGood, onNeutr, onBad }) => (
   </div>
 );
 
-export default Feedbackbtn;
+export default FeedbackOptions;
