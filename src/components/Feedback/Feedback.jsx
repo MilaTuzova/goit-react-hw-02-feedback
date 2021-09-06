@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Feedbackbtn from 'components/BtnFeedback/BtnFeedback';
+import Feedbackbtn from 'components/Feedback/BtnFeedback';
 
 class Feedback extends Component {
   static defaultProps = {
