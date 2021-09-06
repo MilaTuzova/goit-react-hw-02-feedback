@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Feedbackbtn = ({onGood, onNeutr, onBad}) => (
+const Feedbackbtn = ({ onGood, onNeutr, onBad }) => (
   <div>
     <button className="Btn" type="button" onClick={onGood}>
       good

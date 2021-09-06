@@ -45,7 +45,7 @@ class Feedback extends Component {
         />
         <h2> Statistics </h2>
         <div className="statist">
-          <span> Good: {this.state.good} </span> 
+          <span> Good: {this.state.good} </span>
           <span> Neutral: {this.state.neutral} </span>
           <span> Bad: {this.state.bad} </span>
         </div>
