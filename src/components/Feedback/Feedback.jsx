@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import FeedbackOptions from 'components/Feedback/FeedbackOptions';
-import Statistics from './Statistic';
+import Statistics from './Statistics';
 import Notification from './Message';
-import TitleSection from './TitleName';
+import TitleSection from './SectionTitle';
 
 const option = {
   good: 'Good',
@@ -10,32 +10,27 @@ const option = {
   bad: 'Bad',
 };
 
-console.table(option.good.value);
-
 class Feedback extends Component {
   static defaultProps = {
-    goodValue: 0,
-    neutralValue: 0,
-    badValue: 0,
-    totalValue: 0,
-    positivePercentageValue: '',
-    visibleValue: false,
+    goodStaticValue: 0,
+    neutralStaticValue: 0,
+    badStaticValue: 0,
+    totalStaticValue: 0,
+    positivePercentageStaticValue: '100%',
   };
-
-  static propTypes = {};
 
   state = {
-    good: this.props.goodValue,
-    neutral: this.props.neutralValue,
-    bad: this.props.badValue,
+    good: this.props.goodStaticValue,
+    neutral: this.props.neutralStaticValue,
+    bad: this.props.badStaticValue,
     title: 'Please leave feedback',
     titleStat: 'Statistics',
-    total: this.props.totalValue,
-    positivePercentage: this.props.positivePercentageValue,
+    total: this.props.totalStaticValue,
+    positivePercentage: this.props.positivePercentageStaticValue,
   };
 
-  handleClickFeedback = evt => {
-    console.log(evt.target.dataset.option);
+  countTotalFeedback = evt => {
+    console.log(evt);
     const name = evt.target.dataset.option;
     console.log(name);
     this.setState(prevState => ({
@@ -44,39 +39,17 @@ class Feedback extends Component {
     }));
   };
 
-  handleClickGood = () => {
-    this.setState(prevState => ({
-      good: prevState.good + 1,
-      total: prevState.total + 1,
-    }));
-  };
-
-  handleClickNeutr = () => {
-    this.setState(prevState => ({
-      neutral: prevState.neutral + 1,
-      total: prevState.total + 1,
-    }));
-  };
-
-  handleClickBad = () => {
-    this.setState(prevState => ({
-      bad: prevState.bad + 1,
-      total: prevState.total + 1,
-    }));
+  countPositiveFeedbackPercentage = () => {
+    const percent = Math.round((this.state.good / this.state.total) * 100);
+    return percent;
   };
 
   render() {
+    const positivePercent = this.countPositiveFeedbackPercentage();
     return (
       <div>
         <TitleSection title={this.state.title}>
-          <FeedbackOptions
-            options={option}
-            onLeaveFeedback={this.handleClickFeedback}
-
-            // onGood={this.handleClickGood}
-            // onNeutr={this.handleClickNeutr}
-            // onBad={this.handleClickBad}
-          />
+          <FeedbackOptions options={option} onLeaveFeedback={this.countTotalFeedback} />
         </TitleSection>
 
         {this.state.total ? (
@@ -86,7 +59,7 @@ class Feedback extends Component {
             neutral={this.state.neutral}
             bad={this.state.bad}
             total={this.state.total}
-            positivePercentage={this.state.positivePercentage}
+            positivePercentage={positivePercent}
           />
         ) : (
           <Notification message="No feedback given" />

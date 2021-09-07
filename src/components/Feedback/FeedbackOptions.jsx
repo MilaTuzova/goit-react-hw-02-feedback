@@ -6,7 +6,7 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
     <div>
       {objs.map((name, index) => (
-        <button type="button" name={name} key={index} data-option={name} onClick={onLeaveFeedback}>
+        <button type="button" name={name} key={index} data-option={name} onClick={onLeaveFeedback} >
           {options[name]}
         </button>
       ))}
