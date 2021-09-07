@@ -4,7 +4,7 @@ import Statistics from './Statistics';
 import Notification from './Message';
 import TitleSection from './SectionTitle';
 
-import {} from '../Style.styled';
+import {Container} from 'components/Style.styled';
 
 const option = {
   good: 'Good',
@@ -49,7 +49,7 @@ class Feedback extends Component {
   render() {
     const positivePercent = this.countPositiveFeedbackPercentage();
     return (
-      <div>
+      <Container>
         <TitleSection title={this.state.title}>
           <FeedbackOptions options={option} onLeaveFeedback={this.countTotalFeedback} />
         </TitleSection>
@@ -66,7 +66,7 @@ class Feedback extends Component {
         ) : (
           <Notification message="No feedback given" />
         )}
-      </div>
+      </Container>
     );
   }
 }
