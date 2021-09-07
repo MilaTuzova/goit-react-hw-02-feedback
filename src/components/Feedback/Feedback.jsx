@@ -19,7 +19,10 @@ class Feedback extends Component {
     badValue: 0,
     totalValue: 0,
     positivePercentageValue: '',
+    visibleValue: false,
   };
+
+  static propTypes = {};
 
   state = {
     good: this.props.goodValue,
@@ -32,11 +35,32 @@ class Feedback extends Component {
   };
 
   handleClickFeedback = evt => {
-    // console.log(evt.target.dataset.options);
-    const name = evt.target.dataset.options;
+    console.log(evt.target.dataset.option);
+    const name = evt.target.dataset.option;
     console.log(name);
     this.setState(prevState => ({
       [name]: prevState[name] + 1,
+      total: prevState.total + 1,
+    }));
+  };
+
+  handleClickGood = () => {
+    this.setState(prevState => ({
+      good: prevState.good + 1,
+      total: prevState.total + 1,
+    }));
+  };
+
+  handleClickNeutr = () => {
+    this.setState(prevState => ({
+      neutral: prevState.neutral + 1,
+      total: prevState.total + 1,
+    }));
+  };
+
+  handleClickBad = () => {
+    this.setState(prevState => ({
+      bad: prevState.bad + 1,
       total: prevState.total + 1,
     }));
   };
@@ -45,7 +69,14 @@ class Feedback extends Component {
     return (
       <div>
         <TitleSection title={this.state.title}>
-          <FeedbackOptions options={option} onLeaveFeedback={this.handleClickFeedback} />
+          <FeedbackOptions
+            options={option}
+            onLeaveFeedback={this.handleClickFeedback}
+
+            // onGood={this.handleClickGood}
+            // onNeutr={this.handleClickNeutr}
+            // onBad={this.handleClickBad}
+          />
         </TitleSection>
 
         {this.state.total ? (

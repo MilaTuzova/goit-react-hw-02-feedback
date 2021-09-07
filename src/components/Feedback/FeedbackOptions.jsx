@@ -2,12 +2,12 @@ import React from 'react';
 
 const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   const objs = Object.keys(options);
-  console.log(objs);
+
   return (
     <div>
-      {objs.map(key => (
-        <button type="button" name={key} data-options={key} onClick={onLeaveFeedback}>
-          {options[key]}
+      {objs.map((name, index) => (
+        <button type="button" name={name} key={index} data-option={name} onClick={onLeaveFeedback}>
+          {options[name]}
         </button>
       ))}
     </div>
