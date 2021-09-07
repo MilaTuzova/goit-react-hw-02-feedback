@@ -4,6 +4,14 @@ import Statistics from './Statistic';
 import Notification from './Message';
 import TitleSection from './TitleName';
 
+const option = {
+  good: 'Good',
+  neutral: 'Neutral',
+  bad: 'Bad',
+};
+
+console.table(option.good.value);
+
 class Feedback extends Component {
   static defaultProps = {
     goodValue: 0,
@@ -11,10 +19,7 @@ class Feedback extends Component {
     badValue: 0,
     totalValue: 0,
     positivePercentageValue: '',
-    visibleValue: false,
   };
-
-  static propTypes = {};
 
   state = {
     good: this.props.goodValue,
@@ -26,23 +31,12 @@ class Feedback extends Component {
     positivePercentage: this.props.positivePercentageValue,
   };
 
-  handleClickGood = () => {
+  handleClickFeedback = evt => {
+    // console.log(evt.target.dataset.options);
+    const name = evt.target.dataset.options;
+    console.log(name);
     this.setState(prevState => ({
-      good: prevState.good + 1,
-      total: prevState.total + 1,
-    }));
-  };
-
-  handleClickNeutr = () => {
-    this.setState(prevState => ({
-      neutral: prevState.neutral + 1,
-      total: prevState.total + 1,
-    }));
-  };
-
-  handleClickBad = () => {
-    this.setState(prevState => ({
-      bad: prevState.bad + 1,
+      [name]: prevState[name] + 1,
       total: prevState.total + 1,
     }));
   };
@@ -51,11 +45,7 @@ class Feedback extends Component {
     return (
       <div>
         <TitleSection title={this.state.title}>
-          <FeedbackOptions
-            onGood={this.handleClickGood}
-            onNeutr={this.handleClickNeutr}
-            onBad={this.handleClickBad}
-          />
+          <FeedbackOptions options={option} onLeaveFeedback={this.handleClickFeedback} />
         </TitleSection>
 
         {this.state.total ? (
