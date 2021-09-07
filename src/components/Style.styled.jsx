@@ -17,9 +17,8 @@ export const Button = styled.div`
   border-radius: 6px;
   background: linear-gradient(#f3ae0f, #e38916) #e38916;
   transition: 0.2s;
-  margin-left: 5px;
-  margin-top: 25px;
-  cursor: pointer;
+  margin: 20px 5px 20px 5px;
+   cursor: pointer;
 `;
 
 export const StatisticContainer = styled.div`
