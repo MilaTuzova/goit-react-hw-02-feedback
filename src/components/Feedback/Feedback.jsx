@@ -4,6 +4,8 @@ import Statistics from './Statistics';
 import Notification from './Message';
 import TitleSection from './SectionTitle';
 
+import {} from '../Style.styled';
+
 const option = {
   good: 'Good',
   neutral: 'Neutral',
@@ -41,7 +43,7 @@ class Feedback extends Component {
 
   countPositiveFeedbackPercentage = () => {
     const percent = Math.round((this.state.good / this.state.total) * 100);
-    return percent;
+    return `${percent}%`;
   };
 
   render() {
