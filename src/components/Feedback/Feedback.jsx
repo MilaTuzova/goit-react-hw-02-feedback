@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import FeedbackOptions from 'components/Feedback/FeedbackOptions';
 import Statistics from './Statistics';
 import Notification from './Message';
@@ -17,7 +18,6 @@ class Feedback extends Component {
     good: 0,
     neutral: 0,
     bad: 0,
-    // total: 0,
   };
 
   countTotalFeedback = () => {
@@ -29,10 +29,9 @@ class Feedback extends Component {
   leaveFeedback = evt => {
     // console.log(evt);
     const name = evt.target.dataset.option;
-    console.log(name);
+    // console.log(name);
     this.setState(prevState => ({
       [name]: prevState[name] + 1,
-      total: this.countTotalFeedback,
     }));
   };
 
@@ -43,7 +42,8 @@ class Feedback extends Component {
 
   render() {
     const positivePercent = this.countPositiveFeedbackPercentage();
-const totalFeedbask = this.countTotalFeedback();
+    const totalFeedbask = this.countTotalFeedback();
+    
     return (
       <Container>
         <TitleSection title="Please leave feedback">
