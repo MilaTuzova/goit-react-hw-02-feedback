@@ -18,7 +18,7 @@ export const Button = styled.div`
   background: linear-gradient(#f3ae0f, #e38916) #e38916;
   transition: 0.2s;
   margin: 20px 5px 20px 5px;
-   cursor: pointer;
+  cursor: pointer;
 `;
 
 export const StatisticContainer = styled.div`
