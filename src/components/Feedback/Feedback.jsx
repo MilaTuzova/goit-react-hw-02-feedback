@@ -4,7 +4,7 @@ import Statistics from './Statistics';
 import Notification from './Message';
 import TitleSection from './SectionTitle';
 
-import {Container} from 'components/Style.styled';
+import { Container } from 'components/Style.styled';
 
 const option = {
   good: 'Good',
@@ -13,22 +13,11 @@ const option = {
 };
 
 class Feedback extends Component {
-  static defaultProps = {
-    goodStaticValue: 0,
-    neutralStaticValue: 0,
-    badStaticValue: 0,
-    totalStaticValue: 0,
-    positivePercentageStaticValue: '100%',
-  };
-
   state = {
-    good: this.props.goodStaticValue,
-    neutral: this.props.neutralStaticValue,
-    bad: this.props.badStaticValue,
-    title: 'Please leave feedback',
-    titleStat: 'Statistics',
-    total: this.props.totalStaticValue,
-    positivePercentage: this.props.positivePercentageStaticValue,
+    good: 0,
+    neutral: 0,
+    bad: 0,
+    total: 0,
   };
 
   countTotalFeedback = evt => {
@@ -50,13 +39,13 @@ class Feedback extends Component {
     const positivePercent = this.countPositiveFeedbackPercentage();
     return (
       <Container>
-        <TitleSection title={this.state.title}>
+        <TitleSection title="Please leave feedback">
           <FeedbackOptions options={option} onLeaveFeedback={this.countTotalFeedback} />
         </TitleSection>
 
         {this.state.total ? (
           <Statistics
-            title={this.state.titleStat}
+            title="Statistics"
             good={this.state.good}
             neutral={this.state.neutral}
             bad={this.state.bad}
